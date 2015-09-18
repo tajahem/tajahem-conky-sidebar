@@ -1,20 +1,21 @@
 #tajahem_sidebar conky theme
 ---
-<img style="float: right" src="tajahem_sidebar.jpg">
 
-##Description
-
-A simple conky theme with custom scripts to parse and display weather and cpu temperature data. Note: weather data is checked every 15 minutes by default. 
+A simple conky theme with custom scripts to parse and display weather data and cpu temperature. 
 
 Requires:
 
 * [conky](conky.sourceforge.net)
 * [weather-util](fungi.yuggoth.org/weather/)
-* lm-sensors
+* lm-sensors - couldn't find a link, but check with your package manager
+
+<img src="tajahem_sidebar.jpg">
+
+_Note: weather data is checked every 15 minutes by default._
 
 ##Installation
 
-If you do not already have them you will need conky, weather-util, and lm-sensors. Links are above or if you're on Ubuntu:
+If you do not already have them you will need conky, weather-util, and lm-sensors. Links are above or if you are on Ubuntu:
 
 `sudo apt-get install conky weather-util lm-sensors`
 
@@ -22,22 +23,22 @@ Next download the tajahem_sidebar files from the repository and unzip them into 
 
 ##Customization
 
-If you are on a system that has sed you can run the commands in the examples; otherwise use whatever find and replace utility you prefer. _Note: the example commands assume your current working directory is the directory containing tajahem_sidebar's .conkyrc file._
+The weather script takes everything it needs as an argument so all of the relevant changes should only have to be made to the .conkyrc file. The easiest method for most changes is to use a find and replace utility such as sed.
+_Note: the example commands assume your current working directory is the directory containing tajahem_sidebar's .conkyrc file._
 
-###Weather
-Check the weather FAQ or the weather-util man page for information on finding your weather station. Once you've got it replace KOGA in .conkyrc with your station id (US zipcodes work sometimes)
+**Weather -**
+check with [the weather FAQ](http://fungi.yuggoth.org/weather/doc/faq.rst) or `man weather` for information on finding your weather station. Once you've got it replace **KOGA** in .conkyrc with your station id (US zipcodes work sometimes)
 
 example: `sed -i "s/KOGA/69138/g" .conkyrc`
 
-###Name
-Replace |Ta Jahem| with your desired static header information
+**Name -**
+replace **|Ta Jahem|** with your desired static header information
 
 example: `sed -i "s/|Ta Jahem|/Bob the Terrible/g" .conkyrc`
 
-###Fonts 
-Replace DejaVu Sans with your prefered font. While the weather, name and colors are simple to edit manualy, I definately recommend using a find and replace tool for this one as you have to change the xftfont option and every occurance of the font in the TEXT section.
+**Fonts -** 
+replace **DejaVu Sans** with your prefered font. 
 
 example: `sed -i "s/DejaVu Sans/Ubuntu Mono/g" .conkyrc`
 
-###Colors
-Open up the .conkyrc file in your favorite text editor and scroll down to the #colors section. Replace the default colors with either a hexidecimal color code or any [color name recognized by x11](wikipedia.org/wiki/X11_color_names#Color_name_chart) The default background color is supposed to be transparent by default (own_window_transparent yes), but you can change it by setting this to no (line 22).
+**Colors -** are listed in the **#colors section**. Default colors can be replaced with either a hexidecimal color code or any [color name recognized by x11](wikipedia.org/wiki/X11_color_names#Color_name_chart).
